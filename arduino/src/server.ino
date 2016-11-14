@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 // Global constants
+// Estos tienen que ser del tipo INT
 const char BIT_BOTTOM       = 2;
 const char BIT_TOP          = 3;
 const char BIT_DIRECTION    = 4;
@@ -78,6 +79,10 @@ char plate_check_state()
 
 char plate_is_moving( )
 {
+    //Acá no podés hacer un digitalRead porque el PIN está definido como output
+    //Según StackOverflow
+    //Serial.println(bitRead(PORTD,3)); //Reads bit 3 of register PORTD which contains the current state (high/low) of pin 3.
+    //http://stackoverflow.com/questions/6160963/how-can-i-digitalread-a-pin-that-is-in-pinmode-output
     return digitalRead( BIT_MOVE );
 }
 
